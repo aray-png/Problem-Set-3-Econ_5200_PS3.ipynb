@@ -221,3 +221,59 @@ Add the t(7) comparison. With 8 boards, a cluster-robust test should use t with 
 > - **Agency's TWFE:** switching from the normal to t(7) barely changes anything (0.699 → 0.710). The estimate is nowhere near significant either way, and the bootstrap (0.797) agrees.
 > - **Corrected estimate:** t(7) has a big effect in absolute terms, moving the p-value from about 10⁻⁴⁰ to 3 × 10⁻⁶. Fat tails matter when t = 13.3 rests on only 8 boards. But it's still far below the bootstrap's 0.0078, so the t(7) correction is not enough on its own. Even with the right degrees of freedom, conventional clustered inference claims much more precision than 8 boards can support, and only the bootstrap reflects that limit.
 > - **Conclusions don't change:** the agency's estimate is not significant under any method, and the corrected estimate is significant under every method. What changes is the strength of the claim: "p < 0.01", not "p < 0.000001".
+
+---
+
+# AI Appendix: Task 4.3, The Hostile Read
+
+**Model:** Claude Opus 5.5 (Anthropic), in the Claude app
+**Date:** November 9, 2026
+
+## Prompt (as sent, with my §3.2 paragraph pasted in)
+
+```
+[Prep] Act as the state agency's lead econometrician. You believe the
+programme works and you are reading an external review that says your
+TWFE estimate is uninformative.
+
+[Request] Here is the reviewer's paragraph on parallel trends and
+identification: "Evidence and assumption. The event study's leads are
+evidence about only one thing: how adopting and comparison counties moved
+before the programme began. If they moved together then, that is
+consistent with the design, but it does not establish it. The design
+needs the two groups to have kept moving together after adoption had the
+programme never happened, and that claim is about an outcome we can never
+observe, so no test can confirm it. Pre-trends are also weak evidence
+here. Each lead rests on only a few boards, the 2011 cohort has just one
+pre-programme year, and with so little data a real problem can pass
+unnoticed while a sound design can fail by chance, as ours did (joint
+p = 0.006 on data built with no pre-trend at all). For the estimate to be
+read as the programme's effect, the agency must therefore argue, from how
+the rollout actually happened, that: boards did not choose when to adopt
+based on where their local job markets were heading; nothing else that
+affects employment changed in adopting boards at the same time; counties
+did not change hiring in anticipation before the programme started; and
+the programme did not spill over into the comparison counties. If any of
+these fails, the estimate is biased no matter how flat the pre-trends
+look." Give the three strongest objections you would raise in a written
+response.
+
+[Evaluate] Rank them by how much damage each does to the reviewer's
+conclusion.
+```
+
+## Reply (raw, unedited)
+
+> *Acting as the agency's lead econometrician, responding to the review.*
+>
+> **Objection 1: Your own design fails your own test.** The review's event study rejects parallel pre-trends (joint p = 0.006), with a significant lead two years before adoption. The reviewer then argues that pre-trend tests are "weak" and that failing one "is not automatic disproof". That's a convenient standard to adopt the moment your own estimate fails it. If a significant pre-trend doesn't count against the reviewer's estimate, the reviewer has no basis for preferring it to ours on identification grounds.
+>
+> **Objection 2: The review leans on knowledge no one in a real evaluation has.** The paragraph says the failed test was chance because the data were "built with no pre-trend at all". In practice no analyst knows how the data were built. A reader acting on this review cannot verify that claim, so it isn't evidence. Strip it out, and what's left is an unexplained pre-trend in the reviewer's own design.
+>
+> **Objection 3: The assumptions listed apply equally to the reviewer's estimator.** No anticipation, no strategic timing, no concurrent shocks, no spillovers: every one of these is needed for the reviewer's clean estimate just as much as for our TWFE. Nothing in this paragraph shows our estimate is *uninformative*; it shows that *both* estimates rest on the same untestable assumptions. On the paragraph's own terms, the two are equally credible.
+>
+> **Ranking by damage to the reviewer's conclusion**
+>
+> 1. **Objection 1 is the most damaging.** It turns the reviewer's evidence against them, and the paragraph currently answers it only by appealing to the data being simulated.
+> 2. **Objection 2 is next.** It removes the reviewer's only explanation for the failed test.
+> 3. **Objection 3 is the least damaging.** It's true of the paragraph, but the reviewer's case against TWFE comes from Phase 2, not from this paragraph, so the objection is aimed at the wrong target.
